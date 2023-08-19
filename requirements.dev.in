@@ -1,0 +1,9 @@
+-r requirements.in
+
+black
+django-stubs
+djangorestframework-stubs
+flake8
+isort
+mypy
+pytest

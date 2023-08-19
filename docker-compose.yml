@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres:15
+    ports:
+      - target: 5432
+        published: 5439
+        protocol: tcp
+        mode: host
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev_password
