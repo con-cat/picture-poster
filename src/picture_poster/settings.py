@@ -124,6 +124,12 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+# Note: in a real app these files would be served via s3 or
+# similar. Given more time I would configure this and set up local s3
+# emulation in Docker.
+MEDIA_URL = "media/"
+MEDIA_ROOT = "/tmp/picture_poster/media/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
