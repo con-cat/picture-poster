@@ -20,6 +20,7 @@ django==4.2.4
     #   django-stubs
     #   django-stubs-ext
     #   djangorestframework
+    #   easy-thumbnails
 django-stubs==4.2.3
     # via
     #   -r requirements.dev.in
@@ -30,6 +31,8 @@ djangorestframework==3.14.0
     # via -r requirements.in
 djangorestframework-stubs==3.14.2
     # via -r requirements.dev.in
+easy-thumbnails==2.8.5
+    # via -r requirements.in
 flake8==6.1.0
     # via -r requirements.dev.in
 idna==3.4
@@ -56,7 +59,9 @@ packaging==23.1
 pathspec==0.11.2
     # via black
 pillow==10.0.0
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   easy-thumbnails
 platformdirs==3.10.0
     # via black
 pluggy==1.2.0

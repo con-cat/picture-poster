@@ -1,4 +1,5 @@
 django
 djangorestframework
+easy-thumbnails
 Pillow
 psycopg2
