@@ -3,7 +3,9 @@
 black
 django-stubs
 djangorestframework-stubs
+factory-boy
 flake8
 isort
 mypy
 pytest
+pytest-django

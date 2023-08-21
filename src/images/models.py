@@ -27,7 +27,7 @@ class Account(models.Model):
 
 class Image(models.Model):
     original_file = models.ImageField()
-    user = models.ForeignKey(auth_models.User, related_name="user", on_delete=models.CASCADE)
+    user = models.ForeignKey(auth_models.User, related_name="images", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
