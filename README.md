@@ -16,13 +16,22 @@ $ source venv/bin/activate
 $ pip install -r requirements.dev.txt
 ```
 
-2. Run `docker compose up` to start the Docker container running Postgres
+2. Run the following command to start a Docker container running PostgreSQL:
 
-3. Run `src/manage.py migrate` to run migrations
+```
+$ docker compose up
+```
 
-4. Run `src/manage.py createsuperuser` to create a superuser.
+3. Run these commands to run migrations, create a superuser and run your local web
+   server.
 
-5. Run `src/manage.py runserver` to run your local web server.
+```
+$ src/manage.py migrate
+
+$ src/manage.py createsuperuser
+
+$ src/manage.py runserver
+```
 
 6. Visit http://127.0.0.1:8000/admin/ and log in with the superuser credentials you just
    created.
@@ -55,8 +64,11 @@ Run the following commands for testing and linting tools:
 
 ## TODOs / things to do with more time
 
-- Add views and URLs for creating disappearing links - we need a view to create new
-  links, and a view that redirects from a disappearing link to the original image.
+- Add interfaces for creating disappearing links - I have created a model and some
+  back-end functions to support this, but we need a view to create new links, and a view
+  that redirects from a disappearing link's URL
+  (e.g. `http://127.0.0.1:8000/<disappearing_link.slug>`) to the URL of its related
+  Image's original file.
 
 - Add more tests.
 
