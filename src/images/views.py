@@ -1,5 +1,4 @@
 from django.db import models as django_models
-from django.shortcuts import render
 from rest_framework import generics, pagination, permissions
 
 from . import models, serializers
