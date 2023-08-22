@@ -1,6 +1,7 @@
 import io
 
 from django.contrib.auth import models as auth_models
+from django.utils import crypto
 from easy_thumbnails import files as thumbnail_files
 
 from . import models
@@ -34,3 +35,26 @@ def get_user_account_tier(user: auth_models.User) -> models.AccountTier:
     except models.Account.DoesNotExist:
         raise ValueError("User is not associated with an account.")
     return account.tier
+
+
+def create_disappearing_link(image: models.Image, seconds_valid: int) -> models.DisappearingLink:
+    """Create a new DisappearingLink instance."""
+    return models.DisappearingLink.objects.create(
+        slug=get_unique_disappearing_link_slug(), image=image, seconds_valid=seconds_valid
+    )
+
+
+def get_unique_disappearing_link_slug() -> str:
+    """
+    Get a unique, 6-character slug for a disappearing link.
+
+    TODO: in a production app I would consider counting the number of iterations through
+    the loop and logging a warning if it reached a certain threshold. With 6^36 possible
+    combinations it will take a while to exhaust them all!
+
+    """
+    while True:
+        candidate = crypto.get_random_string(length=6).lower()
+        if models.DisappearingLink.objects.filter(slug=candidate).exists():
+            continue
+        return candidate

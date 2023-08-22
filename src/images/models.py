@@ -32,3 +32,10 @@ class Image(models.Model):
 
     def __str__(self) -> str:
         return str(self.original_file)
+
+
+class DisappearingLink(models.Model):
+    image = models.ForeignKey(Image, related_name="disappearing_links", on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    seconds_valid = models.IntegerField()

@@ -28,3 +28,12 @@ class Image(factory.django.DjangoModelFactory):
 
     class Meta:
         model = models.Image
+
+
+class DisappearingLink(factory.django.DjangoModelFactory):
+    image = factory.SubFactory(Image)
+    seconds_valid = 300
+    slug = "abc123"
+
+    class Meta:
+        model = models.DisappearingLink
