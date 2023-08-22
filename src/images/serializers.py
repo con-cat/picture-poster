@@ -6,10 +6,11 @@ from . import domain, models
 
 
 class Image(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
     original_file = serializers.ImageField()
     thumbnails = serializers.SerializerMethodField()
 
-    def create(self, validated_data: dict[str, Any]):
+    def create(self, validated_data: dict[str, Any]) -> models.Image:
         original_file = validated_data["original_file"]
         user = self.context["request"].user
         return domain.create_new_image_for_user(user, original_file)
